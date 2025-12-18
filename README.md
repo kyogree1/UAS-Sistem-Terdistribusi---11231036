@@ -124,15 +124,3 @@ k6 run k6/publish.js
 *Sistem Terdistribusi dan Paralel A*
 
 ---
-
-```
-
-### Mengapa README ini bagus?
-1.  **Visual Langsung**: Menggunakan *badges* dan *mermaid diagram* agar pembaca langsung paham teknologi dan alur sistem.
-2.  **To-the-point**: Instruksi instalasi hanya butuh 1-2 langkah utama.
-3.  **Bukti Kualitas**: Menampilkan tabel fitur dan penjelasan mengenai pengujian (k6 & pytest) memberikan kesan bahwa kode Anda sudah teruji secara industri.
-4.  **Organized**: Penggunaan tabel dan blok kutipan (`> [!TIP]`) membuat informasi tidak menumpuk.
-
-Apakah ada bagian spesifik seperti link demo atau penjelasan algoritma tertentu yang ingin Anda tambahkan di dalamnya?
-
-```
