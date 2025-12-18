@@ -1,4 +1,3 @@
-````md
 # Laporan Proyek UAS  
 ## Sistem Terdistribusi dan Paralel A  
 ### Pub-Sub Idempotent Log Aggregator
@@ -192,7 +191,6 @@ Sistem mengimplementasikan pola **Idempotent Consumer**.
 - Database menggunakan:
   ```sql
   INSERT ... ON CONFLICT (event_id) DO NOTHING
-````
 
 * Event duplikat **tidak memodifikasi state sistem**
 
