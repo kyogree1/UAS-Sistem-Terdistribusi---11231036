@@ -1,0 +1,48 @@
+# --- Python General ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments (Sangat penting jika kamu membuatnya lokal) ---
+venv/
+env/
+.venv/
+.env/
+
+# --- Environment Variables & Secrets ---
+# Kita ignore .env asli, tapi biarkan .env.example (yang ada di gambar) tetap ada
+.env
+.env.local
+.env.*.local
+
+# --- Testing ---
+# Terlihat ada folder .pytest_cache di gambar
+.pytest_cache/
+.coverage
+htmlcov/
+reports/
+
+# --- Distribution / Builds ---
+build/
+dist/
+*.egg-info/
+
+# --- Docker ---
+# Biasanya kita commit Dockerfile, tapi ignore file override lokal jika ada
+docker-compose.override.yml
+
+# --- IDE / Editor Settings ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- K6 (Load Testing) ---
+# Jika K6 menghasilkan file report output
+summary.json
+report.html
