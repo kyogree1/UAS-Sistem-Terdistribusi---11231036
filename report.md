@@ -1,15 +1,3 @@
-Baik. Berikut **versi `report.md` yang DIPERPANJANG, DIPERDETAIL, dan SELARAS penuh** dengan:
-
-* struktur folder proyek yang Anda tampilkan
-* **20 file pengujian pytest** (termasuk `test_06_concurrency_upsert.py`)
-* desain **Pub-Sub Log Aggregator**
-* penekanan **Bab 6, 8, dan 9 (failure, transaksi, konkurensi)**
-* gaya **laporan UAS Sistem Terdistribusi** (siap dikumpulkan)
-
-Silakan **copy–paste langsung** sebagai `report.md`.
-
----
-
 ````md
 # Laporan Proyek UAS  
 ## Sistem Terdistribusi dan Paralel A  
