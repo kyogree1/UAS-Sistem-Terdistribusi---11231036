@@ -8,7 +8,7 @@
 **NIM** : 11231036  
 **Mata Kuliah** : Sistem Terdistribusi dan Paralel A  
 
-**Repository** : (opsional)  
+**Repository** : https://github.com/kyogree1/UAS-Sistem-Terdistribusi---11231036 
 **Link Video Demo** : (isi link YouTube jika diminta)
 
 ---
