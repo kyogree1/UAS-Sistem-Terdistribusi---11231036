@@ -1,34 +1,4 @@
-version: "3.9"
-
 services:
-  aggregator:
-    build: ./aggregator
-    image: uts-aggregator:latest
-    environment:
-      - DATABASE_URL=postgresql://user:pass@storage:5432/db
-      - BROKER_URL=redis://broker:6379
-      - WORKERS=4
-    depends_on:
-      - storage
-      - broker
-    ports:
-      - "8080:8080"
-    volumes:
-      # HAPUS pg_data DARI SINI
-      - ./aggregator:/app  # Ini bagus supaya kalau edit code langsung update (Hot reload)
-    networks:
-      - internal_net
-
-  publisher:
-    build: ./publisher
-    image: uts-publisher:latest
-    depends_on:
-      - aggregator
-    environment:
-      - TARGET_URL=http://aggregator:8080/publish
-    networks:
-      - internal_net
-
   storage:
     image: postgres:16-alpine
     environment:
@@ -36,9 +6,14 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=pass
     volumes:
-      - pg_data:/var/lib/postgresql/data # <<< INI BENAR (Hanya di sini)
+      - pg_data:/var/lib/postgresql/data
     networks:
       - internal_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   broker:
     image: redis:7-alpine
@@ -48,8 +23,58 @@ services:
     networks:
       - internal_net
 
+  aggregator:
+    build: ./aggregator
+    image: uts-aggregator:latest
+    environment:
+      - DATABASE_URL=postgresql://user:pass@storage:5432/db
+      - BROKER_URL=redis://broker:6379
+      - WORKERS=4
+      - BATCH_SIZE=200
+    depends_on:
+      storage:
+        condition: service_healthy # Menunggu DB benar-benar ready
+      broker:
+        condition: service_started
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./aggregator:/app
+    networks:
+      - internal_net
+
+  publisher:
+    build: ./publisher
+    image: uts-publisher:latest
+    depends_on:
+      aggregator:
+        condition: service_started
+    environment:
+      - TARGET_URL=http://aggregator:8080/publish
+      - COUNT=20000        # Sesuai syarat UAS
+      - DUP_RATE=0.30      # Sesuai syarat UAS (30% duplikat)
+    networks:
+      - internal_net
+
+  # Tambahkan K6 untuk memenuhi opsi metrik/performa di laporan
+  k6:
+    image: grafana/k6:latest
+    profiles: ["load"] # Hanya jalan jika dipanggil: docker compose --profile load up
+    volumes:
+      - ./k6:/scripts:ro
+    environment:
+      - TARGET_URL=http://aggregator:8080/publish
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      - internal_net
+    entrypoint: ["k6", "run", "/scripts/publish.js"]
+
 networks:
   internal_net:
+    driver: bridge
+    # internal: true <-- Jangan aktifkan ini kalau mau curl dari windows!
 
 volumes:
   pg_data:

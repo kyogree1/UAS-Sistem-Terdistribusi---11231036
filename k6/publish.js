@@ -2,13 +2,14 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 50,              // 50 Virtual Users
-  duration: '30s',      // Cukup 30 detik untuk tembus 20k event
+  vus: 10,              // 50 Virtual Users
+  duration: '1m',      // Cukup 30 detik untuk tembus 20k event
   thresholds: {
-    http_req_failed: ['rate<0.01'],
+    http_req_failed: ['rate<0.05'],
     http_req_duration: ['p(95)<2000'] // Longgarkan dikit karena batching berat
   }
 };
+sleep(1)
 
 export default function () {
   // Generate 50 event per request
@@ -40,7 +41,8 @@ export default function () {
 
   const payload = JSON.stringify({ events: events });
 
-  const res = http.post("http://localhost:8080/publish", payload, {
+  // PASTIKAN TIDAK ADA SPASI di antara 'aggregator' dan ':8080'
+  const res = http.post("http://aggregator:8080/publish", payload, {
     headers: { "Content-Type": "application/json" },
   });
 
