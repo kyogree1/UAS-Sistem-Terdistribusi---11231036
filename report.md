@@ -1,15 +1,19 @@
-# Laporan Proyek UAS  
-## Sistem Terdistribusi dan Paralel A  
+# Laporan Proyek UAS
+## Sistem Terdistribusi dan Paralel A
 ### Pub-Sub Idempotent Log Aggregator
-
 ---
 
-**Nama** : Muhammad Azka Yunastio  
-**NIM** : 11231036  
-**Mata Kuliah** : Sistem Terdistribusi dan Paralel A  
+**Informasi Mahasiswa**
 
-**Repository** : https://github.com/kyogree1/UAS-Sistem-Terdistribusi---11231036 
-**Link Video Demo** : https://youtu.be/rqJGadHcEx0
+* **Nama** : Muhammad Azka Yunastio
+* **NIM** : 11231036
+* **Mata Kuliah** : Sistem Terdistribusi dan Paralel A
+
+**Tautan Penting**
+
+* **Repository** : [GitHub - UAS Sistem Terdistribusi](https://github.com/kyogree1/UAS-Sistem-Terdistribusi---11231036)
+* **Link Video Demo** : [YouTube Video Demo](https://youtu.be/rqJGadHcEx0)
+
 ---
 
 ## 1. Pendahuluan
