@@ -9,7 +9,7 @@
 **Mata Kuliah** : Sistem Terdistribusi dan Paralel A  
 
 **Repository** : https://github.com/kyogree1/UAS-Sistem-Terdistribusi---11231036 
-**Link Video Demo** : (isi link YouTube jika diminta)
+**Link Video Demo** : https://youtu.be/rqJGadHcEx0
 
 ---
 
