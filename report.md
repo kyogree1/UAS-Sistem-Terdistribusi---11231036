@@ -10,7 +10,6 @@
 
 **Repository** : https://github.com/kyogree1/UAS-Sistem-Terdistribusi---11231036 
 **Link Video Demo** : https://youtu.be/rqJGadHcEx0
-
 ---
 
 ## 1. Pendahuluan
